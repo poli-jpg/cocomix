@@ -15,9 +15,14 @@ export function SettingsForm({ settings }: { settings: Settings }) {
   return (
     <form action={action} className="card max-w-2xl space-y-6 p-6">
       <div>
-        <label htmlFor="whatsapp" className="label">Numéro WhatsApp des commandes</label>
+        <label htmlFor="whatsapp" className="label">Numéro WhatsApp 1 (principal)</label>
         <input id="whatsapp" name="whatsapp" inputMode="tel" defaultValue={formatPhone(settings.whatsapp)} className="input max-w-xs tabular-nums" />
-        <p className="mt-1.5 text-[13px] text-cocoa-500">Les commandes de la boutique arrivent sur ce numéro. Indicatif +221 ajouté automatiquement.</p>
+        <p className="mt-1.5 text-[13px] text-cocoa-500">WhatsApp s’ouvre sur ce numéro quand un client valide sa commande. Indicatif +221 ajouté automatiquement.</p>
+      </div>
+      <div>
+        <label htmlFor="whatsapp_2" className="label">Numéro WhatsApp 2 <span className="font-normal text-cocoa-300">(facultatif)</span></label>
+        <input id="whatsapp_2" name="whatsapp_2" inputMode="tel" defaultValue={settings.whatsapp_2 ? formatPhone(settings.whatsapp_2) : ""} placeholder="78 180 82 13" className="input max-w-xs tabular-nums" />
+        <p className="mt-1.5 text-[13px] text-cocoa-500">Affiché sur le site à côté du premier. Après une commande, le client peut aussi l’envoyer à ce numéro. Laisse vide pour n’en garder qu’un.</p>
       </div>
       <div>
         <label htmlFor="announcement" className="label">Bandeau en haut de la boutique</label>

@@ -4,7 +4,8 @@ import type { Product, Settings, Size } from "./types";
 /** Données de l'affiche, utilisées tant que Supabase n'est pas configuré (aperçu local). */
 export const FALLBACK = {
   settings: {
-    whatsapp: "221756574865",
+    whatsapp: "221781808213",
+    whatsapp_2: "221777210907",
     announcement: "Livraison partout au Sénégal · Commande sur WhatsApp",
     delivery_note: "Frais de livraison confirmés sur WhatsApp selon ta zone.",
   } satisfies Settings,
@@ -36,7 +37,7 @@ export async function getCatalog(): Promise<{ products: Product[]; sizes: Size[]
   const [pr, sz, st] = await Promise.all([
     supabase.from("products").select("*").order("position"),
     supabase.from("sizes").select("*").eq("is_active", true).order("position"),
-    supabase.from("settings").select("whatsapp, announcement, delivery_note").eq("id", 1).maybeSingle(),
+    supabase.from("settings").select("*").eq("id", 1).maybeSingle(),
   ]);
   return {
     products: (pr.data as Product[]) ?? [],

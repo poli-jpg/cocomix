@@ -1,4 +1,5 @@
 import { getCatalog } from "@/lib/catalog";
+import { whatsappNumbers } from "@/lib/format";
 import { CartProvider } from "@/lib/cart";
 import { Benefits } from "@/components/shop/Benefits";
 import { CartDrawer } from "@/components/shop/CartDrawer";
@@ -26,7 +27,7 @@ export default async function HomePage() {
         <Pricing sizes={sizes} packs={packs} />
         <Benefits />
       </main>
-      <Footer whatsapp={settings.whatsapp} flavors={flavors} />
+      <Footer numbers={whatsappNumbers(settings)} flavors={flavors} />
       <CartDrawer deliveryNote={settings.delivery_note} />
       <FlyLayer />
     </CartProvider>

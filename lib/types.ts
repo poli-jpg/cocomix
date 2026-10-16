@@ -25,6 +25,7 @@ export type Size = {
 
 export type Settings = {
   whatsapp: string;
+  whatsapp_2?: string | null;
   announcement: string;
   delivery_note: string;
 };

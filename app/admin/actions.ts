@@ -120,13 +120,20 @@ export async function saveSizes(_prev: ActionState, form: FormData): Promise<Act
 export async function saveSettings(_prev: ActionState, form: FormData): Promise<ActionState> {
   const ctx = await requireAdmin();
   if (ctx.demo) return DEMO;
-  let whatsapp = str(form.get("whatsapp"), 20).replace(/\D/g, "");
-  if (whatsapp.length === 9) whatsapp = `221${whatsapp}`;
-  if (whatsapp.length < 11) return { ok: false, message: "Le numéro WhatsApp doit contenir 9 chiffres (ex. 75 657 48 65)." };
+  const norm = (v: FormDataEntryValue | null) => {
+    let n = str(v, 20).replace(/\D/g, "");
+    if (n.length === 9) n = `221${n}`;
+    return n;
+  };
+  const whatsapp = norm(form.get("whatsapp"));
+  const whatsapp_2 = norm(form.get("whatsapp_2"));
+  if (whatsapp.length < 11) return { ok: false, message: "Le numéro WhatsApp 1 doit contenir 9 chiffres (ex. 78 180 82 13)." };
+  if (whatsapp_2 && whatsapp_2.length < 11) return { ok: false, message: "Le numéro WhatsApp 2 doit contenir 9 chiffres, ou laisse le champ vide." };
   const { error } = await ctx.supabase
     .from("settings")
     .update({
       whatsapp,
+      whatsapp_2,
       announcement: str(form.get("announcement"), 140),
       delivery_note: str(form.get("delivery_note"), 200),
       updated_at: new Date().toISOString(),

@@ -22,3 +22,7 @@ export const STATUS: Record<OrderStatus, { label: string; tone: string }> = {
 
 export const dateFR = (iso: string) =>
   new Intl.DateTimeFormat("fr-FR", { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" }).format(new Date(iso));
+
+/** Les numéros WhatsApp renseignés (1 ou 2), au format international sans espaces. */
+export const whatsappNumbers = (s: { whatsapp: string; whatsapp_2?: string | null }) =>
+  [s.whatsapp, s.whatsapp_2 ?? ""].map((n) => n.replace(/\D/g, "")).filter((n) => n.length >= 9);

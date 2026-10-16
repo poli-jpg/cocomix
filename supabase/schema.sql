@@ -50,7 +50,8 @@ create table if not exists public.sizes (
 -- ---------- Réglages de la boutique (une seule ligne) ----------
 create table if not exists public.settings (
   id integer primary key default 1 check (id = 1),
-  whatsapp text not null default '221756574865',
+  whatsapp text not null default '221781808213',
+  whatsapp_2 text not null default '221777210907',
   announcement text not null default 'Livraison partout au Sénégal · Commande sur WhatsApp',
   delivery_note text not null default 'Frais de livraison confirmés sur WhatsApp selon ta zone.',
   updated_at timestamptz not null default now()

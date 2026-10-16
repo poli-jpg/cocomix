@@ -1,7 +1,7 @@
 "use server";
 
 import { getCatalog } from "@/lib/catalog";
-import { fcfa, orderRef } from "@/lib/format";
+import { fcfa, orderRef, whatsappNumbers } from "@/lib/format";
 import { hasSupabase } from "@/lib/supabase/server";
 import { createServiceClient } from "@/lib/supabase/service";
 import type { OrderItem } from "@/lib/types";
@@ -15,7 +15,7 @@ type Input = {
 };
 
 export type OrderResult =
-  | { ok: true; ref: string | null; whatsappUrl: string; total: number }
+  | { ok: true; ref: string | null; whatsapp: { number: string; url: string }[]; total: number }
   | { ok: false; error: string };
 
 export async function createOrder(input: Input): Promise<OrderResult> {
@@ -78,6 +78,6 @@ export async function createOrder(input: Input): Promise<OrderResult> {
     ok: true,
     ref,
     total: subtotal,
-    whatsappUrl: `https://wa.me/${settings.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent(msg)}`,
+    whatsapp: whatsappNumbers(settings).map((n) => ({ number: n, url: `https://wa.me/${n}?text=${encodeURIComponent(msg)}` })),
   };
 }

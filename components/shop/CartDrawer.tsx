@@ -5,12 +5,12 @@ import { AnimatePresence, motion } from "framer-motion";
 import { CheckCircle2, Minus, Plus, ShoppingBag, Trash2, X } from "lucide-react";
 import { createOrder } from "@/app/actions/order";
 import { useCart } from "@/lib/cart";
-import { fcfa } from "@/lib/format";
+import { fcfa, formatPhone } from "@/lib/format";
 import { tint } from "@/lib/theme";
 import { Confetti } from "./fx";
 import { Pouch } from "./Pouch";
 
-type Done = { ref: string | null; url: string; total: number };
+type Done = { ref: string | null; links: { number: string; url: string }[]; total: number };
 
 export function CartDrawer({ deliveryNote }: { deliveryNote: string }) {
   const { lines, subtotal, isOpen, close, setQty, clear, toast } = useCart();
@@ -49,9 +49,9 @@ export function CartDrawer({ deliveryNote }: { deliveryNote: string }) {
       try {
         localStorage.setItem("cocomix-client", JSON.stringify({ name: form.name, phone: form.phone, address: form.address }));
       } catch {}
-      setDone({ ref: res.ref, url: res.whatsappUrl, total: res.total });
+      setDone({ ref: res.ref, links: res.whatsapp, total: res.total });
       clear();
-      window.open(res.whatsappUrl, "_blank", "noopener");
+      if (res.whatsapp[0]) window.open(res.whatsapp[0].url, "_blank", "noopener");
     });
   };
 
@@ -103,9 +103,19 @@ export function CartDrawer({ deliveryNote }: { deliveryNote: string }) {
                   <p className="mt-4 text-[15px] text-cocoa-500">
                     Total : <strong className="text-ink">{fcfa(done.total)}</strong>. Dernière étape : envoie le message WhatsApp préparé pour confirmer ta commande.
                   </p>
-                  <a href={done.url} target="_blank" rel="noopener noreferrer" className="mt-6 rounded-full bg-[#25D366] px-6 py-3.5 font-bold text-ink transition hover:-translate-y-0.5">
-                    Envoyer sur WhatsApp
-                  </a>
+                  <div className="mt-6 flex w-full flex-col items-center gap-2.5">
+                    {done.links.map((l, k) => (
+                      <a
+                        key={l.number}
+                        href={l.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`w-full max-w-xs rounded-full px-6 py-3.5 font-bold tabular-nums transition hover:-translate-y-0.5 ${k === 0 ? "bg-[#25D366] text-ink" : "border-2 border-[#25D366] text-ink"}`}
+                      >
+                        Envoyer au {formatPhone(l.number)}
+                      </a>
+                    ))}
+                  </div>
                   <button onClick={() => { setDone(null); close(); }} className="mt-3 text-[14px] font-bold text-cocoa-500 hover:text-ink">
                     Continuer mes achats
                   </button>
