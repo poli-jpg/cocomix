@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { ExternalLink, LayoutDashboard, LogOut, Menu, Package, Receipt, Scale, Settings, X } from "lucide-react";
 import { signOut } from "@/app/admin/actions";
+import { Logo } from "@/components/Logo";
 
 const NAV = [
   { href: "/admin", label: "Tableau de bord", icon: LayoutDashboard },
@@ -59,10 +60,9 @@ export function Sidebar({ email, newCount }: { email: string; newCount: number }
   );
 
   const logo = (
-    <p className="px-3 font-display text-2xl font-extrabold tracking-tight">
-      <span className="text-cocoa-700">COCO</span>
-      <span className="text-leaf">MIX</span>
-      <span className="ml-2 rounded-md bg-cocoa px-1.5 py-0.5 align-middle font-sans text-[10px] font-bold uppercase tracking-wider text-cream">Admin</span>
+    <p className="flex items-center gap-2 px-3">
+      <Logo className="h-7 w-auto" />
+      <span className=" rounded-md bg-cocoa px-1.5 py-0.5 align-middle font-sans text-[10px] font-bold uppercase tracking-wider text-cream">Admin</span>
     </p>
   );
 

@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { Bricolage_Grotesque, Figtree } from "next/font/google";
+import { Anton, Bricolage_Grotesque, Figtree } from "next/font/google";
 import "./globals.css";
 
+const logo = Anton({ subsets: ["latin"], variable: "--font-logo", weight: "400" });
 const display = Bricolage_Grotesque({ subsets: ["latin"], variable: "--font-display", weight: ["500", "700", "800"] });
 const body = Figtree({ subsets: ["latin"], variable: "--font-body", weight: ["400", "500", "600", "700"] });
 
@@ -21,7 +22,7 @@ export const viewport: Viewport = { themeColor: "#2E6A2A" };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr" className={`${display.variable} ${body.variable}`}>
+    <html lang="fr" className={`${display.variable} ${body.variable} ${logo.variable}`}>
       <body className="font-sans">{children}</body>
     </html>
   );

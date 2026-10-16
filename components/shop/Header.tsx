@@ -4,14 +4,9 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ShoppingBag } from "lucide-react";
 import { useCart } from "@/lib/cart";
 import { Marquee } from "./fx";
+import { Logo } from "@/components/Logo";
 
-export function Logo({ className = "" }: { className?: string }) {
-  return (
-    <span className={`font-display text-[26px] font-extrabold leading-none tracking-[-0.04em] text-ink ${className}`}>
-      coco<span className="relative">mix<span className="absolute -right-2.5 top-0 h-2 w-2 rounded-full bg-gingembre" /></span>
-    </span>
-  );
-}
+export { Logo };
 
 export function Header({ announcement }: { announcement: string }) {
   const { count, open, bump } = useCart();
@@ -26,7 +21,7 @@ export function Header({ announcement }: { announcement: string }) {
       <motion.header style={{ boxShadow: shadow }} className="sticky top-0 z-30 bg-white/80 backdrop-blur-xl">
         <div className="container-page flex h-[68px] items-center justify-between gap-4">
           <a href="#" aria-label="Cocomix, accueil">
-            <Logo />
+            <Logo className="h-8 w-auto sm:h-9" />
           </a>
           <nav className="hidden items-center gap-1 rounded-full bg-cream-100 p-1 text-[14px] font-semibold md:flex">
             {[

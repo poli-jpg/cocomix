@@ -1,3 +1,4 @@
+import { Logo } from "@/components/Logo";
 import { hasSupabase } from "@/lib/supabase/server";
 import { LoginForm } from "@/components/admin/LoginForm";
 
@@ -7,10 +8,7 @@ export default function LoginPage({ searchParams }: { searchParams: { erreur?: s
   return (
     <main className="grid min-h-screen place-items-center bg-cream px-4 py-10">
       <div className="w-full max-w-sm">
-        <p className="text-center font-display text-3xl font-extrabold tracking-tight">
-          <span className="text-cocoa-700">COCO</span>
-          <span className="text-leaf">MIX</span>
-        </p>
+        <Logo className="mx-auto h-12 w-auto" />
         <div className="card mt-6 p-6 sm:p-8">
           <h1 className="font-display text-2xl font-bold">Espace admin</h1>
           <p className="mt-1 text-[14px] text-cocoa-500">Connecte-toi pour gérer les commandes et les produits.</p>

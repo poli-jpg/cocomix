@@ -1,12 +1,14 @@
 import { MessageCircle, Truck } from "lucide-react";
 import { formatPhone } from "@/lib/format";
 import type { Product } from "@/lib/types";
+import { Logo } from "@/components/Logo";
 
 export function Footer({ numbers, flavors }: { numbers: string[]; flavors: Product[] }) {
   return (
     <footer className="overflow-hidden bg-ink text-white">
       <div className="container-page grid gap-10 pb-10 pt-16 md:grid-cols-[1.5fr_1fr_1fr]">
         <div>
+          <Logo variant="light" className="mb-6 h-10 w-auto" />
           <p className="max-w-sm font-display text-[32px] font-extrabold leading-tight tracking-[-0.03em]">
             Une envie de coco&nbsp;? <span className="text-menthe">Écris-nous.</span>
           </p>
