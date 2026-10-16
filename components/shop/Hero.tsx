@@ -1,9 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { ArrowDown, Leaf } from "lucide-react";
 import { fcfa } from "@/lib/format";
+import { productPhoto } from "@/lib/photos";
 import { flavorTheme } from "@/lib/theme";
 import type { Product } from "@/lib/types";
 import { FlakeShape, Pouch } from "./Pouch";
@@ -25,6 +27,7 @@ export function Hero({ flavors, fromPrice }: { flavors: Product[]; fromPrice: nu
   const [paused, setPaused] = useState(false);
   const f = flavors[i] ?? flavors[0];
   const t = flavorTheme(f?.color ?? "#FFD43B");
+  const photo = f ? productPhoto(f) : null;
 
   useEffect(() => {
     if (paused || reduce || flavors.length < 2) return;
@@ -165,14 +168,23 @@ export function Hero({ flavors, fromPrice }: { flavors: Product[]; fromPrice: nu
             <AnimatePresence mode="wait">
               <motion.div
                 key={f.id}
-                className="w-[52%]"
+                className={photo ? "w-[58%]" : "w-[52%]"}
                 initial={reduce ? { opacity: 0 } : { y: 80, rotate: -18, scale: 0.7, opacity: 0 }}
-                animate={{ y: 0, rotate: -6, scale: 1, opacity: 1 }}
+                animate={{ y: 0, rotate: -5, scale: 1, opacity: 1 }}
                 exit={reduce ? { opacity: 0 } : { y: -60, rotate: 14, scale: 0.8, opacity: 0 }}
                 transition={{ type: "spring", stiffness: 180, damping: 16 }}
               >
                 <motion.div animate={reduce ? undefined : { y: [0, -10, 0] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}>
-                  <Pouch color={f.color} label={f.short_name ?? f.name} seed={i * 13 + 5} className="w-full drop-shadow-[0_30px_30px_rgba(21,17,13,.35)]" />
+                  {photo ? (
+                    <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2rem] border-[3px] border-ink bg-white shadow-pop">
+                      <Image src={photo} alt={`Sachet Cocomix ${f.name}`} fill priority sizes="(max-width: 768px) 60vw, 330px" className="scale-[1.12] object-cover" />
+                      <span className="absolute bottom-3 left-3 rounded-full bg-white px-3 py-1 text-[12px] font-extrabold uppercase tracking-wider text-ink shadow-soft">
+                        {f.short_name ?? f.name}
+                      </span>
+                    </div>
+                  ) : (
+                    <Pouch color={f.color} label={f.short_name ?? f.name} seed={i * 13 + 5} className="w-full drop-shadow-[0_30px_30px_rgba(21,17,13,.35)]" />
+                  )}
                 </motion.div>
               </motion.div>
             </AnimatePresence>
