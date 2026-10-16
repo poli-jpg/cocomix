@@ -22,15 +22,15 @@ const TITLE = ["Croquez", "autrement."];
 export function Hero({ flavors, fromPrice }: { flavors: Product[]; fromPrice: number }) {
   const reduce = useReducedMotion();
   const [i, setI] = useState(0);
-  const [paused, setPaused] = useState(false);
   const f = flavors[i] ?? flavors[0];
   const t = flavorTheme(f?.color ?? "#FFD43B");
 
+  // change de saveur toutes les 3,6 s (le minuteur repart à chaque clic sur une saveur)
   useEffect(() => {
-    if (paused || reduce || flavors.length < 2) return;
-    const id = setInterval(() => setI((x) => (x + 1) % flavors.length), 3600);
-    return () => clearInterval(id);
-  }, [paused, reduce, flavors.length]);
+    if (flavors.length < 2) return;
+    const id = setTimeout(() => setI((x) => (x + 1) % flavors.length), 3600);
+    return () => clearTimeout(id);
+  }, [i, flavors.length]);
 
   if (!f) return null;
 
@@ -39,8 +39,6 @@ export function Hero({ flavors, fromPrice }: { flavors: Product[]; fromPrice: nu
       className="relative overflow-hidden"
       animate={{ backgroundColor: t.soft }}
       transition={{ duration: 0.8, ease: "easeInOut" }}
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
     >
       {/* grain léger */}
       <div aria-hidden className="pointer-events-none absolute inset-0 opacity-[0.35] mix-blend-multiply [background-image:radial-gradient(rgba(21,17,13,.08)_1px,transparent_1px)] [background-size:18px_18px]" />
@@ -118,7 +116,7 @@ export function Hero({ flavors, fromPrice }: { flavors: Product[]; fromPrice: nu
                   }`}
                 >
                   {active && <motion.span layoutId="hero-chip" className="absolute inset-0 -z-10" style={{ backgroundColor: x.color }} />}
-                  {active && !paused && !reduce && (
+                  {active && !reduce && (
                     <motion.span
                       key={`p${i}`}
                       className="absolute bottom-0 left-0 h-[3px] bg-ink/40"
