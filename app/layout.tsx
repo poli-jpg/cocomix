@@ -1,10 +1,32 @@
 import type { Metadata, Viewport } from "next";
-import { Anton, Bricolage_Grotesque, Figtree } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const logo = Anton({ subsets: ["latin"], variable: "--font-logo", weight: "400" });
-const display = Bricolage_Grotesque({ subsets: ["latin"], variable: "--font-display", weight: ["500", "700", "800"] });
-const body = Figtree({ subsets: ["latin"], variable: "--font-body", weight: ["400", "500", "600", "700"] });
+// Polices intégrées au projet (plus de téléchargement Google Fonts pendant le build)
+const logo = localFont({
+  src: [{ path: "./fonts/anton-latin-400-normal.woff2", weight: "400", style: "normal" }],
+  variable: "--font-logo",
+  display: "swap",
+});
+const display = localFont({
+  src: [
+    { path: "./fonts/bricolage-grotesque-latin-500-normal.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/bricolage-grotesque-latin-700-normal.woff2", weight: "700", style: "normal" },
+    { path: "./fonts/bricolage-grotesque-latin-800-normal.woff2", weight: "800", style: "normal" },
+  ],
+  variable: "--font-display",
+  display: "swap",
+});
+const body = localFont({
+  src: [
+    { path: "./fonts/figtree-latin-400-normal.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/figtree-latin-500-normal.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/figtree-latin-600-normal.woff2", weight: "600", style: "normal" },
+    { path: "./fonts/figtree-latin-700-normal.woff2", weight: "700", style: "normal" },
+  ],
+  variable: "--font-body",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: { default: "Cocomix · Chips de noix de coco naturelles", template: "%s · Cocomix" },
