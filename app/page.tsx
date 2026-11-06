@@ -7,7 +7,7 @@ import { Flavors } from "@/components/shop/Flavors";
 import { Footer } from "@/components/shop/Footer";
 import { FlyLayer } from "@/components/shop/fx";
 import { Header } from "@/components/shop/Header";
-import { HeroPhotos } from "@/components/shop/HeroPhotos";
+import { HeroSimple } from "@/components/shop/HeroSimple";
 import { Pricing } from "@/components/shop/Pricing";
 
 export const revalidate = 60;
@@ -22,7 +22,7 @@ export default async function HomePage() {
     <CartProvider products={products} sizes={sizes}>
       <Header announcement={settings.announcement} />
       <main>
-        <HeroPhotos flavors={flavors} fromPrice={Number.isFinite(fromPrice) ? fromPrice : 0} />
+        <HeroSimple flavors={flavors} fromPrice={Number.isFinite(fromPrice) ? fromPrice : 0} />
         <Flavors flavors={flavors} sizes={sizes} />
         <Pricing sizes={sizes} packs={packs} />
         <Benefits />
