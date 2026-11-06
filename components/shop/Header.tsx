@@ -3,21 +3,18 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ShoppingBag } from "lucide-react";
 import { useCart } from "@/lib/cart";
-import { Marquee } from "./fx";
 import { Logo } from "@/components/Logo";
 
 export { Logo };
 
-export function Header({ announcement }: { announcement: string }) {
+// Le bandeau défilant du haut a été retiré ; `announcement` reste accepté pour ne rien casser.
+export function Header(_props: { announcement: string }) {
   const { count, open, bump } = useCart();
   const { scrollY } = useScroll();
   const shadow = useTransform(scrollY, [0, 80], ["0 0 0 rgba(0,0,0,0)", "0 10px 30px -18px rgba(21,17,13,.35)"]);
 
   return (
     <>
-      <div className="bg-ink py-2 text-[13px] font-semibold text-white">
-        <Marquee items={announcement.split("·").map((s) => s.trim()).filter(Boolean).concat(["100 % naturel", "4 saveurs", "Croquez autrement"])} speed="animate-marquee-fast" />
-      </div>
       <motion.header style={{ boxShadow: shadow }} className="sticky top-0 z-30 bg-white/80 backdrop-blur-xl">
         <div className="container-page flex h-[68px] items-center justify-between gap-4">
           <a href="#" aria-label="Cocomix, accueil">
