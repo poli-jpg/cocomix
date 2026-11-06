@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { HeartHandshake, Leaf, ShieldCheck, Wheat } from "lucide-react";
-import { Marquee } from "./fx";
 
 const ITEMS = [
   { icon: Leaf, t: "100 % naturel", d: "Sans additifs.", c: "#2FD48A" },
@@ -37,9 +36,6 @@ export function Benefits() {
             <p className="mt-1 text-[15px] text-cocoa-500">{d}</p>
           </motion.div>
         ))}
-      </div>
-      <div className="mt-20 -rotate-2 border-y-2 border-ink bg-ananas py-4 font-display text-[28px] font-extrabold uppercase tracking-tight text-ink md:text-[40px]">
-        <Marquee items={["Coco au lait", "Coco à la menthe", "Coco au gingembre", "Coco ananas"]} separator="✺" />
       </div>
     </section>
   );

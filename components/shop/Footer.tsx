@@ -48,12 +48,6 @@ export function Footer({ numbers, flavors }: { numbers: string[]; flavors: Produ
           </ul>
         </div>
       </div>
-      <p
-        aria-hidden
-        className="select-none text-center font-display text-[25vw] font-extrabold leading-[0.8] tracking-[-0.06em] text-transparent [-webkit-text-stroke:2px_rgba(255,255,255,.18)]"
-      >
-        cocomix
-      </p>
       <div className="border-t border-white/10">
         <p className="container-page py-5 text-[12px] text-white/40">© {new Date().getFullYear()} Cocomix. Tous droits réservés.</p>
       </div>
