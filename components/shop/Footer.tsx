@@ -3,7 +3,7 @@ import { formatPhone } from "@/lib/format";
 import type { Product } from "@/lib/types";
 import { Logo } from "@/components/Logo";
 
-const TIKTOK = "cocomix002";
+const TIKTOK = "cocomix022";
 
 function TikTokIcon({ className }: { className?: string }) {
   return (
