@@ -34,7 +34,6 @@ export function Pricing({ sizes, packs }: { sizes: Size[]; packs: Product[] }) {
 
           <div className="mt-10 space-y-3">
             {sizes.map((s, i) => {
-              const saving = Math.round((1 - perKg[i] / worst) * 100);
               return (
                 <Reveal key={s.id} delay={i * 0.08} y={18}>
                   <div className="group rounded-2xl border border-white/10 bg-white/[0.04] p-4 transition hover:border-white/25 hover:bg-white/[0.07]">
@@ -55,18 +54,12 @@ export function Pricing({ sizes, packs }: { sizes: Size[]; packs: Product[] }) {
                           transition={{ duration: 1, delay: 0.2 + i * 0.1, ease: [0.2, 0.7, 0.2, 1] }}
                         />
                       </div>
-                      {saving > 0 ? (
-                        <span className="w-14 rounded-full bg-white px-2 py-0.5 text-center text-[11px] font-extrabold text-ink">−{saving} %</span>
-                      ) : (
-                        <span className="w-14" />
-                      )}
                     </div>
                   </div>
                 </Reveal>
               );
             })}
           </div>
-          <p className="mt-4 text-[13px] text-white/50">Économie calculée par rapport au prix du kilo en sachet de 50 g.</p>
         </div>
 
         <div id="packs" className="scroll-mt-24">
