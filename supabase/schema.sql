@@ -33,9 +33,11 @@ create table if not exists public.products (
   image_url text,
   price integer,                       -- prix fixe en FCFA (packs uniquement)
   is_available boolean not null default true,
+  is_new boolean not null default false,
   position integer not null default 0,
   created_at timestamptz not null default now()
 );
+alter table public.products add column if not exists is_new boolean not null default false;
 
 -- ---------- Formats / poids (communs à toutes les saveurs) ----------
 create table if not exists public.sizes (
@@ -137,6 +139,7 @@ insert into public.products (slug, kind, name, short_name, description, color, p
   ('coco-menthe', 'saveur', 'Coco à la menthe', 'Menthe', 'Fraîche et légère, parfaite après le repas ou avec un bon thé.', '#2FD48A', null, 2),
   ('coco-gingembre', 'saveur', 'Coco au gingembre', 'Gingembre', 'Une pointe piquante et chaleureuse, pour ceux qui aiment le relevé.', '#FF7A2F', null, 3),
   ('coco-ananas', 'saveur', 'Coco ananas', 'Ananas', 'Fruitée et ensoleillée, un goût tropical qui fait voyager.', '#FFD43B', null, 4),
+  ('coco-chocolat', 'saveur', 'Coco au chocolat', 'Chocolat', 'Gourmande et fondante, pour les amoureux du cacao.', '#D9A06B', null, 5),
   ('pack-moss-mossat', 'pack', 'Pack Moss Mossat', 'Moss Mossat', 'Pour goûter et se faire plaisir.', '#C98B4E', 750, 5),
   ('pack-mbene', 'pack', 'Pack Mbene', 'Mbene', 'Le pack idéal à partager.', '#C98B4E', 2000, 6),
   ('pack-khewal', 'pack', 'Pack Khewal', 'Khewal', 'Pour toute la famille.', '#C98B4E', 5000, 7),

@@ -108,6 +108,13 @@ function Fields({ product, kind, onDone }: { product?: Product; kind: ProductKin
           <span className="text-[14px] font-semibold">Disponible à la vente</span>
           <span className="text-[13px] text-cocoa-500">Décoche pour afficher « Épuisé ».</span>
         </label>
+        {kind === "saveur" && (
+          <label className="flex items-center gap-3 sm:col-span-2">
+            <input type="checkbox" name="is_new" defaultChecked={product?.is_new ?? false} className="h-5 w-5 accent-leaf" />
+            <span className="text-[14px] font-semibold">Nouveauté</span>
+            <span className="text-[13px] text-cocoa-500">Coche pour la mettre dans l’onglet « Nouveautés » avec le badge « Nouveau ».</span>
+          </label>
+        )}
         <div className="flex flex-wrap items-center gap-3 sm:col-span-2">
           <Submit label={product ? "Enregistrer" : "Ajouter le produit"} />
           <Feedback state={state} />
@@ -159,6 +166,7 @@ export function ProductRow({ product, index }: { product: Product; index: number
             <span className={`rounded-full px-2 py-0.5 text-[11px] font-semibold ${product.is_available ? "bg-leaf-100 text-leaf-600" : "bg-cocoa/10 text-cocoa-700"}`}>
               {product.is_available ? "Disponible" : "Épuisé"}
             </span>
+            {product.is_new && <span className="rounded-full bg-ananas px-2 py-0.5 text-[11px] font-bold text-ink">Nouveau</span>}
           </div>
           <p className="truncate text-[13px] text-cocoa-500">
             {product.kind === "pack" ? fcfa(product.price ?? 0) : "Prix selon le poids"} · {product.description}

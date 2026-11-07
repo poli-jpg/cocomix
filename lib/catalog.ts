@@ -20,6 +20,7 @@ export const FALLBACK = {
     p("menthe", "saveur", "Coco à la menthe", "Menthe", "Fraîche et légère, parfaite après le repas ou avec un bon thé.", "#2FD48A", null, 2),
     p("gingembre", "saveur", "Coco au gingembre", "Gingembre", "Une pointe piquante et chaleureuse, pour ceux qui aiment le relevé.", "#FF7A2F", null, 3),
     p("ananas", "saveur", "Coco ananas", "Ananas", "Fruitée et ensoleillée, un goût tropical qui fait voyager.", "#FFD43B", null, 4),
+    { ...p("chocolat", "saveur", "Coco au chocolat", "Chocolat", "Gourmande et fondante, pour les amoureux du cacao.", "#D9A06B", null, 5), image_url: "/photos/cocomix-chocolat.jpg", is_new: true },
     p("moss", "pack", "Pack Moss Mossat", "Moss Mossat", "Pour goûter et se faire plaisir.", "#C98B4E", 750, 5),
     p("mbene", "pack", "Pack Mbene", "Mbene", "Le pack idéal à partager.", "#C98B4E", 2000, 6),
     p("khewal", "pack", "Pack Khewal", "Khewal", "Pour toute la famille.", "#C98B4E", 5000, 7),

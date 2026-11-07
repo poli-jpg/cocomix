@@ -8,7 +8,7 @@ import { Logo } from "@/components/Logo";
 export { Logo };
 
 // Le bandeau défilant du haut a été retiré ; `announcement` reste accepté pour ne rien casser.
-export function Header(_props: { announcement: string }) {
+export function Header({ hasNew = false }: { announcement: string; hasNew?: boolean }) {
   const { count, open, bump } = useCart();
   const { scrollY } = useScroll();
   const shadow = useTransform(scrollY, [0, 80], ["0 0 0 rgba(0,0,0,0)", "0 10px 30px -18px rgba(21,17,13,.35)"]);
@@ -21,6 +21,15 @@ export function Header(_props: { announcement: string }) {
             <Logo className="h-8 w-auto sm:h-9" />
           </a>
           <nav className="hidden items-center gap-1 rounded-full bg-cream-100 p-1 text-[14px] font-semibold md:flex">
+            {hasNew && (
+              <a href="#nouveautes" className="relative flex items-center gap-2 rounded-full bg-ink px-4 py-2 text-white transition hover:bg-cocoa-700">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-ananas opacity-75 motion-reduce:animate-none" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-ananas" />
+                </span>
+                Nouveautés
+              </a>
+            )}
             {[
               ["#saveurs", "Saveurs"],
               ["#tarifs", "Tarifs"],
@@ -31,6 +40,11 @@ export function Header(_props: { announcement: string }) {
               </a>
             ))}
           </nav>
+          {hasNew && (
+            <a href="#nouveautes" className="ml-auto flex items-center gap-1.5 rounded-full border-2 border-ink bg-ananas px-3 py-1.5 text-[12px] font-extrabold uppercase tracking-wide text-ink md:hidden">
+              Nouveau
+            </a>
+          )}
           <button
             id="cart-button"
             onClick={open}

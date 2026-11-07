@@ -10,7 +10,8 @@ import type { Product } from "@/lib/types";
 import { Pouch } from "./Pouch";
 
 /* Photo d'un produit : celle de la base, sinon la photo du projet (public/photos). */
-const KEYS = ["lait", "menthe", "gingembre", "ananas"];
+const KEYS = ["lait", "menthe", "gingembre", "ananas", "chocolat"];
+const COUNT = ["zéro", "une", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf", "dix"];
 function photoOf(p: Product): string | null {
   if (p.image_url) return p.image_url;
   const k = KEYS.find((key) => p.slug.includes(key) || p.id === key);
@@ -83,7 +84,7 @@ export function HeroSimple({ flavors, fromPrice }: { flavors: Product[]; fromPri
           </div>
 
           <p className="mt-5 max-w-[44ch] text-[17px] leading-relaxed text-cocoa-700">
-            Des chips de noix de coco croustillantes, en quatre saveurs. Du petit sachet de 50 g au pack VIP pour vos événements.
+            Des chips de noix de coco croustillantes, en {COUNT[flavors.length] ?? flavors.length} saveurs. Du petit sachet de 50 g au pack VIP pour vos événements.
           </p>
 
           <div className="mt-7 flex flex-wrap items-center gap-3">

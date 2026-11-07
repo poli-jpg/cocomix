@@ -58,6 +58,7 @@ export async function saveProduct(_prev: ActionState, form: FormData): Promise<A
     color,
     price,
     is_available: form.get("is_available") === "on",
+    is_new: kind === "saveur" && form.get("is_new") === "on",
     position: int(form.get("position")) ?? 0,
   };
 

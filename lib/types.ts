@@ -11,6 +11,7 @@ export type Product = {
   image_url: string | null;
   price: number | null;
   is_available: boolean;
+  is_new?: boolean;
   position: number;
 };
 

@@ -18,7 +18,7 @@ export function ProductVisual({ product, seed, className = "" }: { product: Prod
   return <Pouch color={product.color} label={product.short_name ?? product.name} seed={seed} kraft={product.kind === "pack"} className={className} />;
 }
 
-function FlavorCard({ product, sizes, index }: { product: Product; sizes: Size[]; index: number }) {
+export function FlavorCard({ product, sizes, index }: { product: Product; sizes: Size[]; index: number }) {
   const { add } = useCart();
   const reduce = useReducedMotion();
   const [sizeId, setSizeId] = useState(sizes[1]?.id ?? sizes[0]?.id);
@@ -59,6 +59,11 @@ function FlavorCard({ product, sizes, index }: { product: Product; sizes: Size[]
           <span className={`absolute right-4 top-4 z-10 rounded-full px-3 py-1 text-[11px] font-bold ${out ? "bg-white text-ink" : "bg-ink text-white"}`}>
             {out ? "Épuisé" : "Disponible"}
           </span>
+          {product.is_new && !out && (
+            <span className="absolute left-4 top-12 z-10 rounded-full border-2 border-ink bg-ananas px-3 py-0.5 text-[11px] font-extrabold uppercase tracking-wider text-ink">
+              Nouveau
+            </span>
+          )}
           <motion.div
             key={pop}
             className={`absolute inset-0 flex items-end justify-center pb-3 pt-12 ${out ? "opacity-50 grayscale" : ""}`}
@@ -151,7 +156,10 @@ function FlavorCard({ product, sizes, index }: { product: Product; sizes: Size[]
   );
 }
 
+const COUNT = ["Zéro", "Une", "Deux", "Trois", "Quatre", "Cinq", "Six", "Sept", "Huit", "Neuf", "Dix"];
+
 export function Flavors({ flavors, sizes }: { flavors: Product[]; sizes: Size[] }) {
+  const n = COUNT[flavors.length] ?? String(flavors.length);
   return (
     <section id="saveurs" className="scroll-mt-24 bg-white py-20 md:py-28">
       <div className="container-page">
@@ -159,7 +167,7 @@ export function Flavors({ flavors, sizes }: { flavors: Product[]; sizes: Size[] 
           <div>
             <p className="text-[12px] font-extrabold uppercase tracking-[0.2em] text-cocoa-500">Nos saveurs</p>
             <h2 className="mt-3 font-display text-[44px] font-extrabold leading-[0.95] tracking-[-0.04em] text-ink md:text-[64px]">
-              Quatre façons
+              {n} {flavors.length > 1 ? "façons" : "façon"}
               <br />
               de <span className="relative inline-block">croquer<svg aria-hidden viewBox="0 0 220 18" className="absolute -bottom-2 left-0 w-full"><path d="M3 12 C 60 2, 150 2, 217 10" stroke="#FF7A2F" strokeWidth="7" fill="none" strokeLinecap="round" /></svg></span>
             </h2>
