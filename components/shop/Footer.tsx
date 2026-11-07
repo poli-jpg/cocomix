@@ -16,7 +16,7 @@ function TikTokIcon({ className }: { className?: string }) {
 export function Footer({ numbers, flavors }: { numbers: string[]; flavors: Product[] }) {
   return (
     <footer className="overflow-hidden bg-ink text-white">
-      <div className="container-page grid gap-10 pb-10 pt-16 md:grid-cols-[1.5fr_1fr_1fr]">
+      <div className="container-page grid gap-10 pb-10 pt-12 md:pt-16 md:grid-cols-[1.5fr_1fr_1fr]">
         <div>
           <Logo variant="light" className="mb-6 h-10 w-auto" />
           <p className="max-w-sm font-display text-[32px] font-extrabold leading-tight tracking-[-0.03em]">
@@ -29,7 +29,7 @@ export function Footer({ numbers, flavors }: { numbers: string[]; flavors: Produ
                 href={`https://wa.me/${n}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-6 py-3.5 text-[15px] font-bold tabular-nums text-ink transition hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-3 text-[15px] sm:px-6 sm:py-3.5 font-bold tabular-nums text-ink transition hover:-translate-y-0.5"
               >
                 <MessageCircle className="h-5 w-5" /> {formatPhone(n)}
               </a>

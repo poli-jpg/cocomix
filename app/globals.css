@@ -22,7 +22,7 @@
   .btn-dark { @apply btn bg-cocoa text-cream hover:bg-cocoa-700; }
   .btn-ghost { @apply btn border border-cocoa/15 bg-white/60 text-cocoa hover:border-cocoa/30 hover:bg-white; }
   .card { @apply rounded-xl2 border border-cocoa/[0.07] bg-white shadow-soft; }
-  .input { @apply w-full rounded-xl border border-cocoa/15 bg-white px-3.5 py-2.5 text-[15px] text-cocoa placeholder:text-cocoa-300 transition focus:border-leaf focus:outline-none focus:ring-4 focus:ring-leaf/10; }
+  .input { @apply w-full rounded-xl border border-cocoa/15 bg-white px-3.5 py-2.5 text-[16px] text-cocoa placeholder:text-cocoa-300 transition focus:border-leaf focus:outline-none focus:ring-4 focus:ring-leaf/10; }
   .label { @apply mb-1.5 block text-[13px] font-semibold text-cocoa-700; }
 }
 

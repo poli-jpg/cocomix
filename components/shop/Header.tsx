@@ -16,7 +16,7 @@ export function Header(_props: { announcement: string }) {
   return (
     <>
       <motion.header style={{ boxShadow: shadow }} className="sticky top-0 z-30 bg-white/80 backdrop-blur-xl">
-        <div className="container-page flex h-[68px] items-center justify-between gap-4">
+        <div className="container-page flex h-[60px] items-center md:h-[68px] justify-between gap-4">
           <a href="#" aria-label="Cocomix, accueil">
             <Logo className="h-8 w-auto sm:h-9" />
           </a>
@@ -44,6 +44,17 @@ export function Header(_props: { announcement: string }) {
             </span>
           </button>
         </div>
+        <nav aria-label="Menu" className="container-page flex gap-1.5 pb-2.5 text-[13px] font-semibold md:hidden">
+          {[
+            ["#saveurs", "Saveurs"],
+            ["#tarifs", "Tarifs"],
+            ["#packs", "Packs"],
+          ].map(([href, label]) => (
+            <a key={href} href={href} className="flex-1 rounded-full bg-cream-100 py-2 text-center text-cocoa-700 active:bg-white">
+              {label}
+            </a>
+          ))}
+        </nav>
       </motion.header>
     </>
   );

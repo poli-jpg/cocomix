@@ -181,7 +181,7 @@ export function CartDrawer({ deliveryNote }: { deliveryNote: string }) {
 
                     <div className="mt-7 space-y-3">
                       <h3 className="font-display text-[20px] font-extrabold tracking-tight">Livraison</h3>
-                      <div className="grid grid-cols-2 gap-3">
+                      <div className="grid gap-3 min-[400px]:grid-cols-2">
                         <div>
                           <label htmlFor="c-name" className="label">Prénom et nom</label>
                           <input id="c-name" className="input" autoComplete="name" placeholder="Awa Diop" required {...field("name")} />

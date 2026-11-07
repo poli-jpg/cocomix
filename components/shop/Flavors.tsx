@@ -51,7 +51,7 @@ export function FlavorCard({ product, sizes, index }: { product: Product; sizes:
         style={{ rotateX: rx, rotateY: ry, backgroundColor: t.softer, transformStyle: "preserve-3d" }}
         className="group relative flex h-full min-w-0 flex-col overflow-hidden rounded-4xl border-2 border-ink transition-shadow duration-300 hover:shadow-pop"
       >
-        <div className="relative aspect-[16/12] overflow-hidden" style={{ backgroundColor: t.base }}>
+        <div className="relative aspect-[16/10] overflow-hidden sm:aspect-[16/12]" style={{ backgroundColor: t.base }}>
           <div aria-hidden className="absolute inset-0 opacity-30 [background-image:radial-gradient(rgba(255,255,255,.9)_1.5px,transparent_1.5px)] [background-size:16px_16px]" />
           <span className="absolute left-4 top-4 z-10 rounded-full bg-white px-3 py-1 text-[11px] font-extrabold uppercase tracking-wider text-ink">
             {product.short_name}
@@ -81,9 +81,9 @@ export function FlavorCard({ product, sizes, index }: { product: Product; sizes:
           </motion.div>
         </div>
 
-        <div className="flex flex-1 flex-col gap-4 p-5">
+        <div className="flex flex-1 flex-col gap-3.5 p-4 sm:gap-4 sm:p-5">
           <div>
-            <h3 className="font-display text-[24px] font-extrabold leading-tight tracking-tight text-ink">{product.name}</h3>
+            <h3 className="font-display text-[22px] font-extrabold leading-tight tracking-tight text-ink sm:text-[24px]">{product.name}</h3>
             <p className="mt-1.5 text-[14px] leading-relaxed text-cocoa-700">{product.description}</p>
           </div>
 
@@ -98,7 +98,7 @@ export function FlavorCard({ product, sizes, index }: { product: Product; sizes:
                     type="button"
                     onClick={() => setSizeId(s.id)}
                     aria-pressed={active}
-                    className={`relative rounded-xl py-2 text-[12.5px] font-bold transition-colors ${active ? "text-ink" : "text-cocoa-500 hover:text-ink"}`}
+                    className={`relative rounded-xl py-2.5 text-[12.5px] font-bold transition-colors ${active ? "text-ink" : "text-cocoa-500 hover:text-ink"}`}
                   >
                     {active && (
                       <motion.span
@@ -161,12 +161,12 @@ const COUNT = ["Zéro", "Une", "Deux", "Trois", "Quatre", "Cinq", "Six", "Sept",
 export function Flavors({ flavors, sizes }: { flavors: Product[]; sizes: Size[] }) {
   const n = COUNT[flavors.length] ?? String(flavors.length);
   return (
-    <section id="saveurs" className="scroll-mt-24 bg-white py-20 md:py-28">
+    <section id="saveurs" className="scroll-mt-28 md:scroll-mt-24 bg-white py-14 md:py-28">
       <div className="container-page">
-        <Reveal className="mb-12 flex flex-wrap items-end justify-between gap-6">
+        <Reveal className="mb-8 flex flex-wrap items-end justify-between gap-4 md:mb-12 md:gap-6">
           <div>
             <p className="text-[12px] font-extrabold uppercase tracking-[0.2em] text-cocoa-500">Nos saveurs</p>
-            <h2 className="mt-3 font-display text-[44px] font-extrabold leading-[0.95] tracking-[-0.04em] text-ink md:text-[64px]">
+            <h2 className="mt-3 font-display text-[38px] font-extrabold leading-[0.95] tracking-[-0.04em] text-ink sm:text-[44px] md:text-[64px]">
               {n} {flavors.length > 1 ? "façons" : "façon"}
               <br />
               de <span className="relative inline-block">croquer<svg aria-hidden viewBox="0 0 220 18" className="absolute -bottom-2 left-0 w-full"><path d="M3 12 C 60 2, 150 2, 217 10" stroke="#FF7A2F" strokeWidth="7" fill="none" strokeLinecap="round" /></svg></span>
@@ -176,7 +176,7 @@ export function Flavors({ flavors, sizes }: { flavors: Product[]; sizes: Size[] 
             Choisis ta saveur et ton format : le prix s’adapte au poids. Plus le sachet est grand, plus le kilo est avantageux.
           </p>
         </Reveal>
-        <div className={`grid gap-6 sm:grid-cols-2 ${flavors.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}>
+        <div className={`grid gap-5 sm:grid-cols-2 sm:gap-6 ${flavors.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}>
           {flavors.map((f, i) => (
             <FlavorCard key={f.id} product={f} sizes={sizes} index={i} />
           ))}

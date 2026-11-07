@@ -17,15 +17,15 @@ export function Pricing({ sizes, packs }: { sizes: Size[]; packs: Product[] }) {
   const worst = Math.max(...perKg, 1);
 
   return (
-    <section className="relative overflow-hidden bg-ink py-20 text-white md:py-28">
+    <section className="relative overflow-hidden bg-ink py-14 text-white md:py-28">
       <div aria-hidden className="pointer-events-none absolute -left-32 top-10 h-96 w-96 rounded-full bg-menthe/20 blur-3xl" />
       <div aria-hidden className="pointer-events-none absolute -right-20 bottom-0 h-96 w-96 rounded-full bg-gingembre/20 blur-3xl" />
 
-      <div className="container-page relative grid gap-16 lg:grid-cols-[.95fr_1.05fr]">
-        <div id="tarifs" className="scroll-mt-24">
+      <div className="container-page relative grid gap-12 md:gap-16 lg:grid-cols-[.95fr_1.05fr]">
+        <div id="tarifs" className="scroll-mt-28 md:scroll-mt-24">
           <Reveal>
             <p className="text-[12px] font-extrabold uppercase tracking-[0.2em] text-white/50">Tarifs par poids</p>
-            <h2 className="mt-3 font-display text-[40px] font-extrabold leading-[0.95] tracking-[-0.04em] md:text-[56px]">
+            <h2 className="mt-3 font-display text-[36px] font-extrabold leading-[0.95] tracking-[-0.04em] sm:text-[40px] md:text-[56px]">
               Même prix,
               <br />
               <span className="text-ananas">toutes saveurs.</span>
@@ -62,10 +62,10 @@ export function Pricing({ sizes, packs }: { sizes: Size[]; packs: Product[] }) {
           </div>
         </div>
 
-        <div id="packs" className="scroll-mt-24">
+        <div id="packs" className="scroll-mt-28 md:scroll-mt-24">
           <Reveal>
             <p className="text-[12px] font-extrabold uppercase tracking-[0.2em] text-white/50">Nos packs</p>
-            <h2 className="mt-3 font-display text-[40px] font-extrabold leading-[0.95] tracking-[-0.04em] md:text-[56px]">
+            <h2 className="mt-3 font-display text-[36px] font-extrabold leading-[0.95] tracking-[-0.04em] sm:text-[40px] md:text-[56px]">
               À offrir ou
               <br />
               <span className="text-menthe">à partager.</span>

@@ -12,8 +12,8 @@ const ITEMS = [
 
 export function Benefits() {
   return (
-    <section className="overflow-hidden bg-cream py-20">
-      <div className="container-page grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+    <section className="overflow-hidden bg-cream py-12 md:py-20">
+      <div className="container-page grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
         {ITEMS.map(({ icon: Icon, t, d, c }, i) => (
           <motion.div
             key={t}
@@ -22,18 +22,18 @@ export function Benefits() {
             viewport={{ once: true, margin: "-40px" }}
             transition={{ delay: i * 0.08, duration: 0.6 }}
             whileHover={{ y: -6 }}
-            className="group rounded-3xl border-2 border-ink bg-white p-6 transition-shadow hover:shadow-pop"
+            className="group rounded-3xl border-2 border-ink bg-white p-4 transition sm:p-6-shadow hover:shadow-pop"
           >
             <motion.span
-              className="grid h-14 w-14 place-items-center rounded-2xl border-2 border-ink text-ink"
+              className="grid h-11 w-11 place-items-center rounded-2xl sm:h-14 sm:w-14 border-2 border-ink text-ink"
               style={{ backgroundColor: c }}
               whileHover={{ rotate: [0, -12, 12, 0] }}
               transition={{ duration: 0.5 }}
             >
-              <Icon className="h-6 w-6" />
+              <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
             </motion.span>
-            <h3 className="mt-5 font-display text-[20px] font-extrabold tracking-tight">{t}</h3>
-            <p className="mt-1 text-[15px] text-cocoa-500">{d}</p>
+            <h3 className="mt-3 font-display text-[16px] leading-tight sm:mt-5 sm:text-[20px] font-extrabold tracking-tight">{t}</h3>
+            <p className="mt-1 text-[13px] text-cocoa-500 sm:text-[15px]">{d}</p>
           </motion.div>
         ))}
       </div>

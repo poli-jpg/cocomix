@@ -41,7 +41,7 @@ export function HeroSimple({ flavors, fromPrice }: { flavors: Product[]; fromPri
       animate={{ backgroundColor: t.softer }}
       transition={{ duration: 0.8, ease: "easeInOut" }}
     >
-      <div className="container-page grid items-center gap-8 pb-14 pt-8 md:grid-cols-[1.2fr_.8fr] md:gap-12 md:pb-20 md:pt-14">
+      <div className="container-page grid items-center gap-6 pb-10 pt-6 md:grid-cols-[1.2fr_.8fr] md:gap-12 md:pb-20 md:pt-14">
         {/* Texte */}
         <div>
           <motion.span
@@ -57,14 +57,14 @@ export function HeroSimple({ flavors, fromPrice }: { flavors: Product[]; fromPri
             initial={reduce ? false : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="mt-6 font-display text-[52px] font-extrabold leading-[0.92] tracking-[-0.045em] text-ink sm:text-[72px] lg:text-[84px]"
+            className="mt-4 font-display text-[44px] min-[380px]:text-[52px] font-extrabold leading-[0.92] tracking-[-0.045em] text-ink sm:text-[72px] lg:text-[84px]"
           >
             Croquez
             <br />
             autrement.
           </motion.h1>
 
-          <div className="mt-5 flex h-11 items-center gap-3 text-[20px] font-bold sm:text-[24px]">
+          <div className="mt-4 flex h-11 items-center gap-3 text-[19px] font-bold sm:text-[24px]">
             <span className="text-cocoa-500">Saveur</span>
             <span className="relative inline-flex h-full min-w-[9ch] items-center overflow-hidden">
               <AnimatePresence mode="popLayout" initial={false}>
@@ -83,21 +83,21 @@ export function HeroSimple({ flavors, fromPrice }: { flavors: Product[]; fromPri
             </span>
           </div>
 
-          <p className="mt-5 max-w-[44ch] text-[17px] leading-relaxed text-cocoa-700">
+          <p className="mt-4 max-w-[44ch] text-[16px] sm:text-[17px] leading-relaxed text-cocoa-700">
             Des chips de noix de coco croustillantes, en {COUNT[flavors.length] ?? flavors.length} saveurs. Du petit sachet de 50 g au pack VIP pour vos événements.
           </p>
 
-          <div className="mt-7 flex flex-wrap items-center gap-3">
-            <a href="#saveurs" className="group inline-flex items-center gap-2 rounded-full bg-ink px-7 py-4 text-[15px] font-bold text-white shadow-lift transition hover:-translate-y-0.5">
+          <div className="mt-6 flex flex-wrap items-center gap-2.5 sm:gap-3">
+            <a href="#saveurs" className="group inline-flex flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-full bg-ink px-5 py-3.5 text-[14.5px] sm:flex-none sm:px-7 sm:py-4 sm:text-[15px] font-bold text-white shadow-lift transition hover:-translate-y-0.5">
               Commander maintenant
               <ArrowDown className="h-4 w-4 transition group-hover:translate-y-0.5" />
             </a>
-            <a href="#packs" className="rounded-full border-2 border-ink bg-white/70 px-6 py-[14px] text-[15px] font-bold text-ink transition hover:bg-white">
+            <a href="#packs" className="flex-1 whitespace-nowrap rounded-full border-2 border-ink bg-white/70 text-center px-5 py-[12px] text-[14.5px] sm:flex-none sm:px-6 sm:py-[14px] sm:text-[15px] font-bold text-ink transition hover:bg-white">
               Voir les packs
             </a>
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-2" role="tablist" aria-label="Choisir une saveur">
+          <div className="mt-6 flex flex-wrap gap-2 sm:mt-8" role="tablist" aria-label="Choisir une saveur">
             {flavors.map((x, k) => {
               const active = k === i;
               return (
@@ -119,7 +119,7 @@ export function HeroSimple({ flavors, fromPrice }: { flavors: Product[]; fromPri
         </div>
 
         {/* Photo (taille réduite) */}
-        <div className="relative order-first mx-auto w-full max-w-[220px] sm:max-w-[260px] md:order-none md:max-w-[300px]">
+        <div className="relative order-first mx-auto w-full max-w-[190px] sm:max-w-[260px] md:order-none md:max-w-[300px]">
           <div className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] border-2 border-ink bg-white shadow-pop">
             <AnimatePresence mode="sync" initial={false}>
               <motion.div
@@ -143,13 +143,13 @@ export function HeroSimple({ flavors, fromPrice }: { flavors: Product[]; fromPri
 
           {/* pastille prix, avec un léger flottement */}
           <motion.div
-            className="absolute -bottom-4 -right-4 grid h-20 w-20 place-items-center rounded-full bg-ink text-center text-white shadow-lift sm:h-24 sm:w-24"
+            className="absolute -bottom-3 -right-5 grid h-[72px] w-[72px] place-items-center rounded-full bg-ink text-center text-white shadow-lift sm:h-24 sm:w-24"
             animate={reduce ? undefined : { y: [0, -6, 0] }}
             transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
           >
             <span className="leading-tight">
               <span className="block text-[10px] font-semibold uppercase tracking-widest text-white/60">dès</span>
-              <span className="block font-display text-[20px] font-extrabold tabular-nums sm:text-[22px]">{fcfa(fromPrice)}</span>
+              <span className="block font-display text-[18px] font-extrabold tabular-nums sm:text-[22px]">{fcfa(fromPrice)}</span>
             </span>
           </motion.div>
         </div>
