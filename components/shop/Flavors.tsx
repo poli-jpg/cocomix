@@ -176,7 +176,7 @@ export function Flavors({ flavors, sizes }: { flavors: Product[]; sizes: Size[] 
             Choisis ta saveur et ton format : le prix s’adapte au poids. Plus le sachet est grand, plus le kilo est avantageux.
           </p>
         </Reveal>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className={`grid gap-6 sm:grid-cols-2 ${flavors.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}>
           {flavors.map((f, i) => (
             <FlavorCard key={f.id} product={f} sizes={sizes} index={i} />
           ))}

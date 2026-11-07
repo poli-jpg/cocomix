@@ -112,7 +112,7 @@ function Fields({ product, kind, onDone }: { product?: Product; kind: ProductKin
           <label className="flex items-center gap-3 sm:col-span-2">
             <input type="checkbox" name="is_new" defaultChecked={product?.is_new ?? false} className="h-5 w-5 accent-leaf" />
             <span className="text-[14px] font-semibold">Nouveauté</span>
-            <span className="text-[13px] text-cocoa-500">Coche pour la mettre dans l’onglet « Nouveautés » avec le badge « Nouveau ».</span>
+            <span className="text-[13px] text-cocoa-500">Coche pour afficher le badge « Nouveau » sur la saveur.</span>
           </label>
         )}
         <div className="flex flex-wrap items-center gap-3 sm:col-span-2">
