@@ -55,7 +55,6 @@ export function Pricing({ sizes, packs }: { sizes: Size[]; packs: Product[] }) {
                           transition={{ duration: 1, delay: 0.2 + i * 0.1, ease: [0.2, 0.7, 0.2, 1] }}
                         />
                       </div>
-                      <span className="w-28 text-right text-[13px] tabular-nums text-white/60">{fcfa(perKg[i])}/kg</span>
                       {saving > 0 ? (
                         <span className="w-14 rounded-full bg-white px-2 py-0.5 text-center text-[11px] font-extrabold text-ink">−{saving} %</span>
                       ) : (

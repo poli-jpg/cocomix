@@ -5,7 +5,7 @@ import { useRef, useState } from "react";
 import { AnimatePresence, motion, useMotionValue, useReducedMotion, useSpring, useTransform } from "framer-motion";
 import { Plus } from "lucide-react";
 import { useCart } from "@/lib/cart";
-import { fcfa, pricePerKg } from "@/lib/format";
+import { fcfa } from "@/lib/format";
 import { flavorTheme } from "@/lib/theme";
 import type { Product, Size } from "@/lib/types";
 import { Pouch } from "./Pouch";
@@ -127,7 +127,6 @@ function FlavorCard({ product, sizes, index }: { product: Product; sizes: Size[]
                     </motion.p>
                   </AnimatePresence>
                 </div>
-                <p className="mt-1 text-[12px] font-medium tabular-nums text-cocoa-500">{fcfa(pricePerKg(size.price, size.grams))} / kg</p>
               </div>
             )}
             <motion.button
